@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import {trimPackage} from 'app/components/events/interfaces/frame/utils';
 import {STACKTRACE_PREVIEW_TOOLTIP_DELAY} from 'app/components/stacktracePreview';
 import Tooltip from 'app/components/tooltip';
-import overflowEllipsis from 'app/styles/overflowEllipsis';
 import space from 'app/styles/space';
 import {defined} from 'app/utils';
 
@@ -51,13 +50,7 @@ class PackageLink extends React.Component<Props> {
             title={packagePath}
             delay={isHoverPreviewed ? STACKTRACE_PREVIEW_TOOLTIP_DELAY : undefined}
           >
-            <PackageName
-              isClickable={isClickable}
-              withLeadHint={withLeadHint}
-              includeSystemFrames={includeSystemFrames}
-            >
-              {trimPackage(packagePath)}
-            </PackageName>
+            <PackageName>{trimPackage(packagePath)}</PackageName>
           </Tooltip>
         ) : (
           <span>{'<unknown>'}</span>
@@ -90,12 +83,9 @@ const Package = styled('a')<Partial<Props>>`
   }
 `;
 
-const PackageName = styled('span')<
-  Pick<Props, 'isClickable' | 'withLeadHint' | 'includeSystemFrames'>
->`
-  max-width: ${p =>
-    p.withLeadHint && p.isClickable && !p.includeSystemFrames ? '45px' : '104px'};
-  ${overflowEllipsis}
+const PackageName = styled('span')`
+  word-break: break-all;
+  white-space: pre-wrap;
 `;
 
 export default PackageLink;

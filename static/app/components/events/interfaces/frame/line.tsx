@@ -237,10 +237,14 @@ export class Line extends React.Component<Props, State> {
 
     return !nextFrame ? (
       <LeadHint className="leads-to-app-hint" width="115px">
-        {t('Crashed in non-app: ')}
+        {t('Crashed in non-app')}
+        {': '}
       </LeadHint>
     ) : (
-      <LeadHint className="leads-to-app-hint">{t('Called from: ')}</LeadHint>
+      <LeadHint className="leads-to-app-hint">
+        {t('Called from')}
+        {': '}
+      </LeadHint>
     );
   }
 
@@ -293,7 +297,6 @@ export class Line extends React.Component<Props, State> {
       onFunctionNameToggle,
       image,
       maxLengthOfRelativeAddress,
-      isFrameAfterLastNonApp,
       includeSystemFrames,
       showCompleteFunctionName,
       isHoverPreviewed,
@@ -305,7 +308,7 @@ export class Line extends React.Component<Props, State> {
     return (
       <StrictClick onClick={this.isExpandable() ? this.toggleContext : undefined}>
         <DefaultLine className="title as-table">
-          <NativeLineContent isFrameAfterLastNonApp={!!isFrameAfterLastNonApp}>
+          <NativeLineContent>
             <PackageInfo>
               {leadHint}
               <PackageLink
@@ -433,21 +436,16 @@ const PackageInfo = styled('div')`
   }
 `;
 
-const NativeLineContent = styled('div')<{isFrameAfterLastNonApp: boolean}>`
+const NativeLineContent = styled('div')`
   display: grid;
   flex: 1;
   grid-gap: ${space(0.5)};
-  grid-template-columns: ${p => (p.isFrameAfterLastNonApp ? '167px' : '117px')} 1fr;
+  grid-template-columns: 0.5fr 1fr;
   align-items: center;
   justify-content: flex-start;
 
   @media (min-width: ${props => props.theme.breakpoints[0]}) {
-    grid-template-columns: ${p => (p.isFrameAfterLastNonApp ? '200px' : '150px')} 117px 1fr auto;
-  }
-
-  @media (min-width: ${props => props.theme.breakpoints[2]}) and (max-width: ${props =>
-      props.theme.breakpoints[3]}) {
-    grid-template-columns: ${p => (p.isFrameAfterLastNonApp ? '180px' : '140px')} 117px 1fr auto;
+    grid-template-columns: 1fr 0.5fr 1.5fr;
   }
 `;
 
