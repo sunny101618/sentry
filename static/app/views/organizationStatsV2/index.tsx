@@ -28,6 +28,7 @@ import {
   Project,
   RelativePeriod,
 } from 'app/types';
+import withOrganization from 'app/utils/withOrganization';
 
 import {CHART_OPTIONS_DATACATEGORY, ChartDataTransform} from './usageChart';
 import UsageStatsOrg from './usageStatsOrg';
@@ -53,7 +54,7 @@ type State = {
   isCalendarOpen: boolean;
 };
 
-class OrganizationStats extends React.Component<Props, State> {
+export class OrganizationStats extends React.Component<Props, State> {
   state = {
     isCalendarOpen: false,
   };
@@ -321,7 +322,7 @@ class OrganizationStats extends React.Component<Props, State> {
   }
 }
 
-export default OrganizationStats;
+export default withOrganization(OrganizationStats);
 
 const PageGrid = styled('div')`
   display: grid;

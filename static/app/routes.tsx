@@ -1703,7 +1703,17 @@ function routes() {
             path="/organizations/:orgId/stats/"
             componentPromise={() =>
               import(
-                /* webpackChunkName: "OrganizationStats" */ 'app/views/organizationStats'
+                /* webpackChunkName: "OrganizationStats" */ 'app/views/organizationStatsV2'
+              )
+            }
+            component={errorHandler(LazyLoad)}
+          />
+
+          <Route
+            path="/organizations/:orgId/statsV1/"
+            componentPromise={() =>
+              import(
+                /* webpackChunkName: "OrganizationStatsV1" */ 'app/views/organizationStats'
               )
             }
             component={errorHandler(LazyLoad)}
