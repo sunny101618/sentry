@@ -26,14 +26,14 @@ from sentry.models import (
     User,
     UserReport,
 )
-from sentry.notifications.rules import (
-    AlertRuleNotification,
+from sentry.notifications.rules import AlertRuleNotification
+from sentry.notifications.types import NotificationSettingOptionValues, NotificationSettingTypes
+from sentry.notifications.utils.participants import (
     get_send_to,
     get_send_to_member,
     get_send_to_owners,
     get_send_to_team,
 )
-from sentry.notifications.types import NotificationSettingOptionValues, NotificationSettingTypes
 from sentry.ownership import grammar
 from sentry.ownership.grammar import Matcher, Owner, dump_schema
 from sentry.plugins.base import Notification

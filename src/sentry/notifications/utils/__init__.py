@@ -26,7 +26,6 @@ from sentry.models import (
     User,
     UserEmail,
 )
-from sentry.plugins.base import plugins
 from sentry.utils.committers import get_serialized_event_file_committers
 
 logger = logging.getLogger(__name__)
@@ -197,6 +196,8 @@ def get_commits(project: Project, event: Any) -> Sequence[Mapping[str, Any]]:
 
 
 def has_integrations(organization: Organization, project: Project) -> bool:
+    from sentry.plugins.base import plugins
+
     project_plugins = plugins.for_project(project, version=1)
     organization_integrations = Integration.objects.filter(organizations=organization).first()
     return bool(project_plugins or organization_integrations)
