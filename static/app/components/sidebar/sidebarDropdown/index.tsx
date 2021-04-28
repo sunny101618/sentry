@@ -161,9 +161,6 @@ const SidebarDropdown = ({api, org, orientation, collapsed, config, user}: Props
                   <SidebarMenuItem href="https://sentry.io/welcome/">
                     {t('Homepage')}
                   </SidebarMenuItem>
-                  <SidebarMenuItem href="https://sentry.io/pricing/">
-                    {t('Pricing')}
-                  </SidebarMenuItem>
                 </div>
               </React.Fragment>
             </OrgUserAndMarketingMenu>
