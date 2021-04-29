@@ -75,9 +75,7 @@ class ReprocessingEventModal extends React.Component<Props, State> {
 
     return (
       <React.Fragment>
-        <Header closeButton>
-          <span data-test-id="modal-title">{title}</span>
-        </Header>
+        <Header closeButton>{title}</Header>
         <Body>
           <Introduction>
             {t(

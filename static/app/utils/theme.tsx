@@ -5,6 +5,8 @@ import color from 'color';
 import CHART_PALETTE from 'app/constants/chartPalette';
 
 const colors = {
+  transparent: 'transparent',
+
   white: '#FFFFFF',
   black: '#1D1127',
 
@@ -90,6 +92,11 @@ const lightAliases = {
    * Inner borders, e.g. borders inside of a grid
    */
   innerBorder: colors.gray100,
+
+  /**
+   * Border around modals
+   */
+  modalBorder: colors.transparent,
 
   /**
    * A color that denotes a "success", or something good
@@ -557,6 +564,7 @@ const darkAliases = {
   backgroundSecondary: colors.gray500,
   border: colors.gray400,
   innerBorder: colors.gray500,
+  modalBorder: colors.gray400,
   textColor: colors.white,
   subText: colors.gray200,
   linkColor: colors.blue200,

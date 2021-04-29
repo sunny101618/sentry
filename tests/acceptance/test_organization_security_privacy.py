@@ -41,9 +41,9 @@ class OrganizationSecurityAndPrivacyTest(AcceptanceTestCase):
             '[data-test-id="organization-settings-security-and-privacy"] .error'
         )
         self.browser.click("#require2FA")
-        self.browser.wait_until(".modal")
-        self.browser.click('.modal [data-test-id="confirm-button"]')
-        self.browser.wait_until_not(".modal")
+        self.browser.wait_until(".modal-content")
+        self.browser.click('.modal-content [data-test-id="confirm-button"]')
+        self.browser.wait_until_not(".modal-content")
         self.browser.wait_until_test_id("toast-error")
         self.load_organization_helper("setting 2fa without 2fa enabled")
 

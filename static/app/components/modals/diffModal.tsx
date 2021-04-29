@@ -13,15 +13,15 @@ const DiffModal = ({className, Body, ...props}: Props) => (
 );
 
 const modalCss = css`
-  .modal-dialog {
-    display: flex;
-    margin: 0;
-    left: 10px;
-    right: 10px;
-    top: 10px;
-    bottom: 10px;
-    width: auto;
-  }
+  display: flex;
+  margin: 0;
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 10px;
+  bottom: 10px;
+  width: auto;
+
   .modal-content {
     display: flex;
     flex: 1;
