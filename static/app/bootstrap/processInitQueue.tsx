@@ -32,9 +32,7 @@ export async function processInitQueue() {
         // The password strength component is very heavyweight as it includes the
         // zxcvbn, a relatively byte-heavy password strength estimation library. Load
         // it on demand.
-        const passwordStrength = await import(
-          /* webpackChunkName: "passwordStrength" */ 'app/components/passwordStrength'
-        );
+        const passwordStrength = await import('app/components/passwordStrength');
 
         passwordStrength.attachTo({
           input: document.querySelector(input),
