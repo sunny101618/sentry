@@ -1,3 +1,13 @@
+import {renderDom} from './renderDom';
+import {renderOnDomReady} from './renderOnDomReady';
+
+const COMPONENT_MAP = new Map([
+  ['Indicators', () => import('app/components/indicators')],
+  ['SystemAlerts', () => import('app/views/app/systemAlerts')],
+  ['SetupWizard', () => import('app/views/setupWizard')],
+  ['U2fSign', () => import('app/components/u2f/u2fsign')],
+]);
+
 /**
  * This allows server templates to push "tasks" to be run after application has initialized.
  * The global `window.__onSentryInit` is used for this.
@@ -34,22 +44,15 @@ export async function processInitQueue() {
         return;
       }
 
-      if (initConfig.name === 'renderIndicators') {
-        const {renderIndicators} = await import(
-          /* webpackChunkName: "renderIndicators" */ 'app/bootstrap/renderIndicators'
+      if (initConfig.name === 'renderReact') {
+        if (!COMPONENT_MAP.has(initConfig.component)) {
+          return;
+        }
+        const {default: Component} = await COMPONENT_MAP.get(initConfig.component)();
+
+        renderOnDomReady(() =>
+          renderDom(Component, initConfig.container, initConfig.props)
         );
-        renderIndicators(initConfig.container, initConfig.props);
-
-        return;
-      }
-
-      if (initConfig.name === 'renderSystemAlerts') {
-        const {renderSystemAlerts} = await import(
-          /* webpackChunkName: "renderSystemAlerts" */ 'app/bootstrap/renderSystemAlerts'
-        );
-        renderSystemAlerts(initConfig.container, initConfig.props);
-
-        return;
       }
     })
   );

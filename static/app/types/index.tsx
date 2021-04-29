@@ -28,7 +28,8 @@ export type OnSentryInitConfiguration =
       element: string;
     }
   | {
-      name: 'renderSystemAlerts' | 'renderIndicators';
+      name: 'renderReact';
+      component: 'Indicators' | 'SetupWizard' | 'SystemAlerts';
       container: string;
       props?: Record<string, any>;
     };

@@ -49,9 +49,7 @@ globals.SentryApp = {
   },
 
   // The following components are used in legacy django HTML views
-  U2fSign: require('app/components/u2f/u2fsign').default,
   ConfigStore: require('app/stores/configStore').default,
-  SetupWizard: require('app/components/setupWizard').default,
   HookStore: require('app/stores/hookStore').default,
   Modal: require('app/actionCreators/modal'),
 };
