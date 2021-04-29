@@ -19,9 +19,7 @@ const CreateOwnershipRuleModal = ({Body, Header, closeModal, ...props}: Props) =
 
   return (
     <React.Fragment>
-      <Header closeButton onHide={closeModal}>
-        {t('Create Ownership Rule')}
-      </Header>
+      <Header closeButton>{t('Create Ownership Rule')}</Header>
       <Body>
         <ProjectOwnershipModal {...props} onSave={handleSuccess} />
       </Body>
@@ -31,10 +29,7 @@ const CreateOwnershipRuleModal = ({Body, Header, closeModal, ...props}: Props) =
 
 export const modalCss = css`
   @media (min-width: ${theme.breakpoints[0]}) {
-    .modal-dialog {
-      width: 80%;
-      margin-left: -40%;
-    }
+    width: 80%;
   }
   .modal-content {
     overflow: initial;

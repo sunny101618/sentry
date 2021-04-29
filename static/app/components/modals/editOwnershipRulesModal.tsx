@@ -8,12 +8,10 @@ import OwnershipModal from 'app/views/settings/project/projectOwnership/editRule
 
 type Props = ModalRenderProps & EditOwnershipRulesModalOptions;
 
-const EditOwnershipRulesModal = ({Body, Header, closeModal, onSave, ...props}: Props) => {
+const EditOwnershipRulesModal = ({Body, Header, onSave, ...props}: Props) => {
   return (
     <React.Fragment>
-      <Header closeButton onHide={closeModal}>
-        {t('Edit Ownership Rules')}
-      </Header>
+      <Header closeButton>{t('Edit Ownership Rules')}</Header>
       <Body>
         <OwnershipModal {...props} onSave={onSave} />
       </Body>
@@ -23,10 +21,7 @@ const EditOwnershipRulesModal = ({Body, Header, closeModal, onSave, ...props}: P
 
 export const modalCss = css`
   @media (min-width: ${theme.breakpoints[0]}) {
-    .modal-dialog {
-      width: 80%;
-      margin-left: -40%;
-    }
+    width: 80%;
   }
   .modal-content {
     overflow: initial;
