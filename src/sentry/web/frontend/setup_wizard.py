@@ -26,7 +26,6 @@ class SetupWizardView(BaseView):
         context = {"hash": wizard_hash}
         key = f"{SETUP_WIZARD_CACHE_KEY}{wizard_hash}"
 
-        return render_to_response("sentry/setup-wizard.html", context, request)
         wizard_data = default_cache.get(key)
         if wizard_data is None:
             return self.redirect_to_org(request)
